@@ -1,0 +1,163 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: #000;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 5px;
+
+  transition: width 0.25s ease;
+
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 60px;
+  padding: 0 10px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+  width: 45px;
+  height: auto;
+}
+
+.logo-btn {
+  width: 40px;
+  height: auto;
+}
+
+.toggle-btn {
+  width: 36px;
+  height: 36px;
+
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.material {
+  width: 16px;
+  height: 2px;
+  background: white;
+  position: relative;
+  display: block;
+  box-shadow: 0 -6px 0 white, 0 6px 0 white;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+  flex: 1;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.homeLogo {
+  width: 35px;
+}
+
+.nenomonLogo {
+  width: 35px;
+}
+
+.objectLogo {
+  width: 35px;
+}
+
+.sidebar.collapsed span {
+  display: none;
+}
+
+.sidebar.collapsed .menu a {
+  justify-content: center;
+}
+
+.bottom {
+  margin-top: auto;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logout-btn {
+  width: 100%;
+  height: 40px;
+
+  background: #7a1a1a;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #a02222;
+  transform: scale(1.03);
+}
+
+.sidebar.collapsed .bottom {
+  padding: 5px;
+}
+
+.sidebar.collapsed .logout-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 0;
+}
+
+.sidebar.collapsed .logout-btn::after {
+  content: "⎋";
+  font-size: 18px;
+}

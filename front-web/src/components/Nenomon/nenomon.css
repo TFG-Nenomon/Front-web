@@ -1,0 +1,275 @@
+.nenomon-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #ff8a00 0%,
+    #ff4d00 30%,
+    #1a0a00 70%,
+    #0a0a0a 100%
+  );
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.nenomon-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.nenomon-list {
+  width: 220px;
+  max-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  overflow-y: auto;
+
+  padding: 14px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  border: 2px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 22px;
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 25px rgba(255, 255, 255, 0.03);
+
+  position: relative;
+}
+
+.nenomon-list::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+
+  border-radius: 22px 22px 0 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+.nenomon-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nenomon-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nenomon-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+
+  border-radius: 20px;
+}
+
+.nenomon-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nenomon-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 52px;
+
+  padding: 0 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.nenomon-item:hover {
+  transform: translateY(-2px) scale(1.01);
+
+  background: rgba(255, 255, 255, 0.14);
+
+  border-color: rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.25),
+    inset 0 0 10px rgba(255, 255, 255, 0.03);
+}
+
+.nenomon-item img {
+  width: 38px;
+  height: 38px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  padding: 2px;
+}
+
+.nenomon-item span {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  color: white;
+}
+
+.nenomon-card {
+  width: 350px;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nenomon-image {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+.nenomon-card h2 {
+  margin-top: 25px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.filter-top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.filter-wrapper {
+  position: relative;
+}
+
+.filter-main-btn,
+.filter-dropdown-item,
+.filter-active-tag,
+.filter-clear-btn {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  background: #4a3028;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.filter-main-btn:hover,
+.filter-dropdown-item:hover,
+.filter-clear-btn:hover {
+  background: #5a3a30;
+  transform: scale(1.02);
+}
+
+.filter-main-btn {
+  gap: 8px;
+}
+
+.filter-dropdown-item.active {
+  background: #6a4a38;
+}
+
+.filter-clear-btn {
+  width: 40px;
+  padding: 0;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.filter-clear-btn:hover {
+  background: #7a1a1a;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  padding: 0;
+  min-width: 140px;
+  z-index: 100;
+}
+
+.filter-sublevel {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  padding: 0;
+  min-width: 140px;
+  z-index: 102;
+}
+
+.filter-input {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: none;
+  background: #4a3028;
+  color: white;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.filter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}

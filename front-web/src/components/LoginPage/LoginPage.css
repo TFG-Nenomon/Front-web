@@ -1,0 +1,15 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-left: 10%;
+  padding-right: 1rem;
+     background: linear-gradient(
+    135deg,
+    #ff8a00 0%,
+    #ff4d00 30%,
+    #1a0a00 70%,
+    #0a0a0a 100%
+  );
+}
