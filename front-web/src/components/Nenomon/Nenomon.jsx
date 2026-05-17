@@ -20,7 +20,7 @@ function Nenomon() {
   const btnRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  const nenomonTypes = ["Agua", "Fuego", "Planta", "Electrico", "Hielo", "RocaS"];
+  const nenomonTypes = ["Agua", "Fuego", "Planta", "Electrico", "Bicho", "Legendario"];
 
   useEffect(() => {
     function handleClickOutside(e) {
