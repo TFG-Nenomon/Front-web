@@ -49,6 +49,11 @@ function Sidebar() {
           <img src={object} alt="Objetos" className="objectLogo" />
           <span>Objetos</span>
         </Link>
+
+        <Link to="/team">
+          <img src={object} alt="Team" className="objectLogo" />
+          <span>Equipo</span>
+        </Link>
       </nav>
 
       <div className="bottom">

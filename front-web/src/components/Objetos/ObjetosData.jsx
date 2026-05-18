@@ -20,12 +20,12 @@ export const objetos = [
         id: 3,
         name: 'Mt',
         image: Mt,
-        description: 'Aumenta el ataque de un Nenomon.',
+        description: 'Sirve para enseñar un ataque a un Nenomon.',
     },
     {
         id: 4,
         name: 'Caramelo',
         image: Caramelo,
-        description: 'Aumenta la defensa de un Nenomon.',
+        description: 'Sube un nivel a un Nenomon.',
     },
 ];

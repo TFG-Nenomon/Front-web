@@ -73,7 +73,7 @@ function Login() {
       navigate("/home");
 
     } else {
-      alert("Credenciales incorrectas");
+      alert("Credenciales incorrectas, usuario o contraseña no válidos");
     }
   };
 
