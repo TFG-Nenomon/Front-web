@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./objetos.css";
 
 import { objetos } from "./ObjetosData";
 
 function Objetos() {
+  const [focusedId, setFocusedId] = useState(null);
+
   return (
     <div className="objetos-container">
 
@@ -13,7 +16,13 @@ function Objetos() {
 
         {objetos.map((objeto) => (
 
-          <div className="objeto-card" key={objeto.id}>
+          <div
+            className="objeto-card"
+            key={objeto.id}
+            tabIndex={0}
+            onFocus={() => setFocusedId(objeto.id)}
+            onBlur={() => setFocusedId(null)}
+          >
 
             <img
               src={objeto.image}

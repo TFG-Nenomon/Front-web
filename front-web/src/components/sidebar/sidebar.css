@@ -12,6 +12,7 @@
   flex-direction: column;
 
   padding: 5px;
+  font-family:  system-ui, "Segoe UI", Arial, sans-serif;;
 
   transition: width 0.25s ease;
 
@@ -106,6 +107,9 @@
 .nenomonLogo {
   width: 35px;
 }
+.pokedexLogo {
+  width: 35px;
+}
 
 .objectLogo {
   width: 35px;
@@ -160,4 +164,16 @@
 .sidebar.collapsed .logout-btn::after {
   content: "⎋";
   font-size: 18px;
+}
+.menu a:focus-visible {
+  outline: 3px solid #00aaff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.toggle-btn:focus-visible,
+.logout-btn:focus-visible {
+  outline: 3px solid #00aaff;
+  outline-offset: 2px;
+  border-radius: 6px;
 }

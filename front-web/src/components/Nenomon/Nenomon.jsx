@@ -16,9 +16,12 @@ function Nenomon() {
   const [filterValue, setFilterValue] = useState("");
   const [appliedFilter, setAppliedFilter] = useState(null);
 
+  const [searchTimeout, setSearchTimeout] = useState(null);
+
   const filterRef = useRef(null);
   const btnRef = useRef(null);
   const dropdownRef = useRef(null);
+  const nombreInputRef = useRef(null);
 
   const nenomonTypes = ["Agua", "Fuego", "Planta", "Electrico", "Bicho", "Legendario"];
 
@@ -32,6 +35,14 @@ function Nenomon() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (filterOpen && activeFilter === "nombre") {
+      setTimeout(() => {
+        nombreInputRef.current?.focus();
+      }, 0);
+    }
+  }, [filterOpen, activeFilter]);
 
   function filterByType(type) {
     fetch(`http://localhost:8080/nenomon/tipo/${type}`)
@@ -74,6 +85,18 @@ function Nenomon() {
       });
   }
 
+  function handleNameChange(value) {
+    setFilterValue(value);
+
+    if (searchTimeout) clearTimeout(searchTimeout);
+
+    const timeout = setTimeout(() => {
+      filterByName(value);
+    }, 400);
+
+    setSearchTimeout(timeout);
+  }
+
   function clearFilter() {
     setAppliedFilter(null);
     setHasSearched(false);
@@ -103,6 +126,11 @@ function Nenomon() {
 
   const sublevelTop = activeFilter === "nombre" ? 0 : 46;
 
+  const typeCount =
+    appliedFilter?.kind === "tipo"
+      ? backendNenomons.length
+      : 0;
+
   return (
     <div className="nenomon-container">
       <Sidebar />
@@ -127,18 +155,30 @@ function Nenomon() {
               {filterOpen && (
                 <div className="filter-dropdown" ref={dropdownRef}>
                   <div
-                    className={`filter-dropdown-item ${activeFilter === "nombre" ? "active" : ""}`}
+                    className={`filter-dropdown-item ${
+                      activeFilter === "nombre" ? "active" : ""
+                    }`}
+                    tabIndex={0}
+                    role="button"
                     onClick={() =>
-                      setActiveFilter((prev) => (prev === "nombre" ? null : "nombre"))
+                      setActiveFilter((prev) =>
+                        prev === "nombre" ? null : "nombre"
+                      )
                     }
                   >
                     Nombre
                   </div>
 
                   <div
-                    className={`filter-dropdown-item ${activeFilter === "tipo" ? "active" : ""}`}
+                    className={`filter-dropdown-item ${
+                      activeFilter === "tipo" ? "active" : ""
+                    }`}
+                    tabIndex={0}
+                    role="button"
                     onClick={() =>
-                      setActiveFilter((prev) => (prev === "tipo" ? null : "tipo"))
+                      setActiveFilter((prev) =>
+                        prev === "tipo" ? null : "tipo"
+                      )
                     }
                   >
                     Tipo
@@ -149,18 +189,17 @@ function Nenomon() {
               {filterOpen && activeFilter === "nombre" && (
                 <div
                   className="filter-sublevel"
-                  style={{ left: `${getSublevelLeft()}px`, top: `${sublevelTop}px` }}
+                  style={{
+                    left: `${getSublevelLeft()}px`,
+                    top: `${sublevelTop}px`,
+                  }}
                 >
                   <input
+                    ref={nombreInputRef}
                     className="filter-input"
                     placeholder="Buscar por nombre..."
                     value={filterValue}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setFilterValue(value);
-                      filterByName(value);
-                    }}
-                    autoFocus
+                    onChange={(e) => handleNameChange(e.target.value)}
                   />
                 </div>
               )}
@@ -168,12 +207,17 @@ function Nenomon() {
               {filterOpen && activeFilter === "tipo" && (
                 <div
                   className="filter-sublevel"
-                  style={{ left: `${getSublevelLeft()}px`, top: `${sublevelTop}px` }}
+                  style={{
+                    left: `${getSublevelLeft()}px`,
+                    top: `${sublevelTop}px`,
+                  }}
                 >
                   {nenomonTypes.map((type) => (
                     <div
                       key={type}
                       className="filter-dropdown-item"
+                      tabIndex={0}
+                      role="button"
                       onClick={() => filterByType(type)}
                     >
                       {type}
@@ -184,20 +228,18 @@ function Nenomon() {
             </div>
 
             {appliedFilter && (
-              <>
-                <div className="filter-active-tag">
-                  {appliedFilter.kind === "tipo"
-                    ? `Tipo: ${appliedFilter.value}`
-                    : `Nombre: ${appliedFilter.value}`}
-                </div>
+              <div className="filter-active-tag">
+                {appliedFilter.kind === "tipo"
+                  ? `Tipo: ${appliedFilter.value} (${typeCount})`
+                  : `Nombre: ${appliedFilter.value} (${visibleNenomons.length})`}
 
                 <button className="filter-clear-btn" onClick={clearFilter}>
                   🗑️
                 </button>
-              </>
+              </div>
             )}
           </div>
-
+ 
           <NenomonCard nenomon={selectedNenomon} />
         </div>
       </div>

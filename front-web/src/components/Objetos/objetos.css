@@ -1,6 +1,7 @@
 .objetos-container {
   min-height: 100vh;
   display: flex;
+  font-family: Arial;
 
   background: linear-gradient(
     135deg,
@@ -112,4 +113,7 @@
 .objeto-card:hover .objeto-image,
 .objeto-card:hover .objeto-name {
   opacity: 0.15;
+}
+.objeto-card:focus .objeto-tooltip {
+  opacity: 1;
 }
