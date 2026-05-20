@@ -6,6 +6,7 @@ import home from "../../assets/homeImage/homeLogo.png";
 import nenomon from "../../assets/nenomonImage/nenomon.png";
 import object from "../../assets/objectImage/object.png";
 import pokedex from "../../assets/Pokedex/pokedex.png";
+import ayudaIcon from "../../assets/ayudaImage/Ayuda.png";
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -68,7 +69,7 @@ function Sidebar() {
         </Link>
 
         <Link to="/ayuda">
-          <img src={nenomon} alt="" aria-hidden="true" className="nenomonLogo" />
+          <img src={ayudaIcon} alt="" aria-hidden="true" className="ayudaLogo" />
           <span>Ayuda</span>
         </Link>
       </nav>

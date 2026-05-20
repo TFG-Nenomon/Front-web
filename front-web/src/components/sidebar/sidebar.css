@@ -115,6 +115,10 @@
   width: 35px;
 }
 
+.ayudaLogo {
+  width: 35px;
+}
+
 .sidebar.collapsed span {
   display: none;
 }
